@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ParticipantForWelcomeCallQuery } from '../participantForWelcomeCallQuery';
-import { PARTICIPANTS } from '../mock-participants';
 import { ParticipantService } from '../participant.service';
 
 @Component({
