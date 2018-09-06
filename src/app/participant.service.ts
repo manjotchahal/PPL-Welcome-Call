@@ -3,7 +3,7 @@ import { Observable, of } from 'rxjs';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { Participant } from './participant';
+import { ParticipantForWelcomeCallQuery } from './participantForWelcomeCallQuery';
 //import { PARTICIPANTS } from './mock-participants';
 
 @Injectable({
@@ -15,7 +15,7 @@ export class ParticipantService {
 
   constructor(private http: HttpClient) { }
 
-  getParticipants(): Observable<Participant[]> {
-    return this.http.get<Participant[]>(this.participantsUrl)
+  getParticipants(): Observable<ParticipantForWelcomeCallQuery[]> {
+    return this.http.get<ParticipantForWelcomeCallQuery[]>(this.participantsUrl)
   }
 }

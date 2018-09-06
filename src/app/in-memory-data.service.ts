@@ -4,28 +4,28 @@ export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const participants = [
         {
-            Name: { FirstName: 'Test', LastName: 'User1' },
-            Program: { ProgramCode: 'ABC' },
-            DateOfBirth: new Date(1980,1,1),
-            Ssn: '1234'
+            Name: 'Test User1',
+            Program: 'ABC',
+            DOB: '01/01/1980',
+            LastFourSsn: '1234'
         },
         {
-            Name: { FirstName: 'Test', LastName: 'User2' },
-            Program: { ProgramCode: 'BCD' },
-            DateOfBirth: new Date(1990,12,18),
-            Ssn: '9482'
+            Name: 'Test User2',
+            Program: 'BCD',
+            DOB: '12/18/1990',
+            LastFourSsn: '9234'
         },
         {
-            Name: { FirstName: 'Test', LastName: 'User3' },
-            Program: { ProgramCode: 'VA DMAS' },
-            DateOfBirth: new Date(1995,12,18),
-            Ssn: '5282'
+            Name: 'Test User3',
+            Program: 'VA DMAS',
+            DOB: '12/18/1995',
+            LastFourSsn: '5234'
         },
         {
-            Name: { FirstName: 'Test', LastName: 'User4' },
-            Program: { ProgramCode: 'DEF' },
-            DateOfBirth: new Date(1900,12,18),
-            Ssn: '3782'
+            Name: 'Test User4',
+            Program: 'DEF',
+            DOB: '12/18/1900',
+            LastFourSsn: '3234'
         }
     ];
     return {participants};

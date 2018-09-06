@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Participant } from '../participant';
+import { ParticipantForWelcomeCallQuery } from '../participantForWelcomeCallQuery';
 import { PARTICIPANTS } from '../mock-participants';
 import { ParticipantService } from '../participant.service';
 
@@ -18,7 +18,7 @@ export class WelcomeCallComponent implements OnInit {
 
   //participants = PARTICIPANTS;
 
-  participants: Participant[];
+  participants: ParticipantForWelcomeCallQuery[];
 
   constructor(private participantService: ParticipantService) { }
 
