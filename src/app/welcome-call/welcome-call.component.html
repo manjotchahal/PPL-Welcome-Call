@@ -1,0 +1,10 @@
+<table>
+  <th>Participant Information</th><br/><br/>
+  <tr *ngFor="let participant of participants">
+    Name {{participant.Name.FirstName}} {{participant.Name.LastName}}<br/>
+    <!-- Program <span *ngFor="let program of participant.Program">{{program.ProgramCode}}, </span><br/> -->
+    Program {{participant.Program.ProgramCode}}<br/>
+    DOB {{participant.DateOfBirth | date: 'MM/dd/yyyy'}}<br/>
+    Last 4 digits of SS# {{participant.Ssn}}<br/><br/>
+  </tr>
+</table>
