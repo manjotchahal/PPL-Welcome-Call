@@ -1,10 +1,40 @@
+<span style="padding-left: 500px;">
+  <form>
+    Outreach Attempted
+    <select>
+      <option value="all">All
+      <option value="yes">Yes
+      <option value="no">No
+    </select>
+  </form>
+  <form>
+      Started Enrollment
+      <select>
+        <option value="all">All
+        <option value="yes">Yes
+        <option value="no">No
+      </select>
+    </form>
+</span><br/><br/>
 <table>
-  <th>Participant Information</th><br/><br/>
+  <th>Participant Information</th><th>Call Details</th><br/><br/>
   <tr *ngFor="let participant of participants">
-    Name {{participant.Name}}<br/>
-    <!-- Program <span *ngFor="let program of participant.Program">{{program.ProgramCode}}, </span><br/> -->
-    Program {{participant.Program}}<br/>
-    DOB {{participant.DOB}}<br/>
-    Last 4 digits of SS# {{participant.LastFourSsn}}<br/><br/>
+    <td>
+      Name {{participant.Name}}<br/>
+      <!-- Program <span *ngFor="let program of participant.Program">{{program.ProgramCode}}, </span><br/> -->
+      Program {{participant.Program}}<br/>
+      DOB {{participant.DOB}}<br/>
+      Last 4 digits of SS# {{participant.LastFourSsn}}<br/><br/>
+    </td>
+    <td style="padding-left: 285px;">
+      Time in system without initial attempt {{participant.TimeInSystemWithoutAttempt}}<br/>
+      <!-- Program <span *ngFor="let program of participant.Program">{{program.ProgramCode}}, </span><br/> -->
+      Time in system {{participant.TimeInSystem}}<br/>
+      Outreach attempts {{participant.OutreachAttempts}}<br/>
+      Started Enrollment {{participant.StartedEnrollment}}<br/><br/>
+    </td>
+    <td style="padding-left: 100px;">
+      <button>Edit</button>
+    </td>
   </tr>
 </table>
