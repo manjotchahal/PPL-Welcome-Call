@@ -1,24 +1,21 @@
-<span style="padding-left: 500px;">
-  <form>
+<span style="padding-left: 565px;">
     Outreach Attempted
-    <select>
-      <option value="all">All
-      <option value="yes">Yes
-      <option value="no">No
+    <select [(ngModel)]="selectedOutreach" (ngModelChange)="onOptionsSelected(selectedOutreach, selectedEnrollment)" style="margin-right: 20px;">
+      <option value="all">All</option>
+      <option value="yes">Yes</option>
+      <option value="no">No</option>
     </select>
-  </form>
-  <form>
       Started Enrollment
-      <select>
+      <select [(ngModel)]="selectedEnrollment" (ngModelChange)="onOptionsSelected(selectedOutreach, selectedEnrollment)">
         <option value="all">All
         <option value="yes">Yes
         <option value="no">No
       </select>
-    </form>
 </span><br/><br/>
+<!-- <div>Value {{selectedOutreach}}</div> -->
 <table>
   <th>Participant Information</th><th>Call Details</th><br/><br/>
-  <tr *ngFor="let participant of participants">
+  <tr *ngFor="let participant of filteredParticipants">
     <td>
       Name {{participant.Name}}<br/>
       <!-- Program <span *ngFor="let program of participant.Program">{{program.ProgramCode}}, </span><br/> -->

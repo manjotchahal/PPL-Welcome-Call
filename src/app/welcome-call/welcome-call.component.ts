@@ -18,15 +18,91 @@ export class WelcomeCallComponent implements OnInit {
   //participants = PARTICIPANTS;
 
   participants: ParticipantForWelcomeCallQuery[];
-
+  filteredParticipants: ParticipantForWelcomeCallQuery[];
+  selectedOutreach: string;
+  selectedEnrollment: string;
+  
   constructor(private participantService: ParticipantService) { }
 
   ngOnInit() {
     this.getParticipants();
+    this.selectedOutreach = 'all';
+    this.selectedEnrollment = 'all';
   }
 
   getParticipants(): void {
-    this.participantService.getParticipants().subscribe(participants => this.participants = participants);
+    this.participantService.getParticipants().subscribe(participants => this.participants = this.filteredParticipants = participants);
   }
 
+  onOptionsSelected(selectedOutreach, selectedEnrollment) {
+    switch (selectedOutreach){
+      case 'yes':
+        switch (selectedEnrollment){
+          case 'yes':
+            this.filteredParticipants = this.participants.filter(t => t.OutreachAttempts != '0' && t.StartedEnrollment == 'Yes');
+            break;
+          case 'no':
+            this.filteredParticipants = this.participants.filter(t => t.OutreachAttempts != '0' && t.StartedEnrollment == 'No');
+            break;
+          default:
+            this.filteredParticipants = this.participants.filter(t => t.OutreachAttempts != '0');
+            break;
+        }
+        break;
+      case 'no':
+        switch (selectedEnrollment){
+          case 'yes':
+            this.filteredParticipants = this.participants.filter(t => t.OutreachAttempts == '0' && t.StartedEnrollment == 'Yes');
+            break;
+          case 'no':
+            this.filteredParticipants = this.participants.filter(t => t.OutreachAttempts == '0' && t.StartedEnrollment == 'No');
+            break;
+          default:
+            this.filteredParticipants = this.participants.filter(t => t.OutreachAttempts == '0');
+            break;
+        }
+        break;
+      default:
+        switch (selectedEnrollment){
+          case 'yes':
+            this.filteredParticipants = this.participants.filter(t => t.StartedEnrollment == 'Yes');
+            break;
+          case 'no':
+            this.filteredParticipants = this.participants.filter(t => t.StartedEnrollment == 'No');
+            break;
+          default:
+            this.filteredParticipants = this.participants;
+            break;
+        }
+        break;
+    }
+
+    // if (selectedOutreach == 'no' && selectedEnrollment == 'all') {  
+    //   this.filteredParticipants = this.participants.filter(t => t.OutreachAttempts == '0');
+    // }
+    // else if (selectedOutreach == 'no' && selectedEnrollment == 'yes') {  
+    //   this.filteredParticipants = this.participants.filter(t => t.OutreachAttempts == '0' && t.StartedEnrollment == 'Yes');
+    // }
+    // else if (selectedOutreach == 'no' && selectedEnrollment == 'no') {  
+    //   this.filteredParticipants = this.participants.filter(t => t.OutreachAttempts == '0' && t.StartedEnrollment == 'No');
+    // }
+    // else if (selectedOutreach == 'yes' && selectedEnrollment == 'all') {  
+    //   this.filteredParticipants = this.participants.filter(t => t.OutreachAttempts != '0');
+    // }
+    // else if (selectedOutreach == 'yes' && selectedEnrollment == 'yes') {  
+    //   this.filteredParticipants = this.participants.filter(t => t.OutreachAttempts != '0' && t.StartedEnrollment == 'Yes');
+    // }
+    // else if (selectedOutreach == 'yes' && selectedEnrollment == 'no') {  
+    //   this.filteredParticipants = this.participants.filter(t => t.OutreachAttempts != '0' && t.StartedEnrollment == 'No');
+    // }
+    // else if (selectedOutreach == 'all' && selectedEnrollment == 'yes') {  
+    //   this.filteredParticipants = this.participants.filter(t => t.StartedEnrollment == 'Yes');
+    // }
+    // else if (selectedOutreach == 'all' && selectedEnrollment == 'no') {  
+    //   this.filteredParticipants = this.participants.filter(t => t.StartedEnrollment == 'No');
+    // }
+    // else {
+    //   this.filteredParticipants = this.participants;
+    // }
+  }
 }
